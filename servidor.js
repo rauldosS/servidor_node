@@ -34,8 +34,12 @@ app.get('/videos', function(req, res) {
     request(urlTest, function (error, response) {
         if (!error && response.statusCode == 200) {
             console.log('status é ok, achou videos');
-            console.log(JSON.parse(response.body));
+
             res.send('<h1>Status é ok, achou</h1> <p>Impresso na tela ' + response.statusCode + '</p>');
+            
+            var videos = JSON.parse(response.body) 
+            console.log(videos['data'])
+            //res.send("<h1>" + typeof(videos) + "</h1>")
         } else if (!error && response.statusCode == 404) {
             console.log('deu 404')
         }
